@@ -55,6 +55,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
 
     implementation(libs.imageslideshow)
+    implementation(libs.lottie)
 
 
     testImplementation(libs.junit)
