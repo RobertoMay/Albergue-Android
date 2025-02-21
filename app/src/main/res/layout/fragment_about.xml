@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <!-- Misión -->
+        <TextView
+            android:id="@+id/misionTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mision_title"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"/>
+
+        <TextView
+            android:id="@+id/misionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/mision_text"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            android:lineSpacingExtra="4dp"/>
+
+        <!-- Visión -->
+        <TextView
+            android:id="@+id/visionTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vision_title"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp"/>
+
+        <TextView
+            android:id="@+id/visionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/vision_text"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            android:lineSpacingExtra="4dp"/>
+
+        <!-- Beneficios -->
+        <TextView
+            android:id="@+id/beneficiosTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/beneficios_title"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp"/>
+
+        <TextView
+            android:id="@+id/beneficiosText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/beneficios_text"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            android:lineSpacingExtra="4dp"/>
+
+        <!-- Responsabilidades -->
+        <TextView
+            android:id="@+id/responsabilidadesTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/responsabilidades_title"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp"/>
+
+        <TextView
+            android:id="@+id/responsabilidadesText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/responsabilidades_text"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            android:lineSpacingExtra="4dp"/>
+
+    </LinearLayout>
+</ScrollView>
