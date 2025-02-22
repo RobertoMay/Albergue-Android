@@ -16,10 +16,10 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.home.HomeActivity"
+            android:name=".ui.toolbar.ToolbarActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.AlbergueAndroid" >
+            android:theme="@style/Theme.AppCompat.Light" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

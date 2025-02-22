@@ -16,8 +16,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/mision_title"
-            android:textSize="20sp"
+            android:textSize="22sp"
             android:textStyle="bold"
+            android:textColor="@color/red"
             android:layout_marginTop="16dp"/>
 
         <TextView
@@ -35,8 +36,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/vision_title"
-            android:textSize="20sp"
+            android:textSize="22sp"
             android:textStyle="bold"
+            android:textColor="@color/red"
             android:layout_marginTop="24dp"/>
 
         <TextView
@@ -54,7 +56,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/beneficios_title"
-            android:textSize="20sp"
+            android:textColor="@color/red"
+            android:textSize="22sp"
             android:textStyle="bold"
             android:layout_marginTop="24dp"/>
 
@@ -73,7 +76,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/responsabilidades_title"
-            android:textSize="20sp"
+            android:textColor="@color/red"
+            android:textSize="22sp"
             android:textStyle="bold"
             android:layout_marginTop="24dp"/>
 
