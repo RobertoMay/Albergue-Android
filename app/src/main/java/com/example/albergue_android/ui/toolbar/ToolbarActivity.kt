@@ -17,14 +17,6 @@ class ToolbarActivity : AppCompatActivity() {
         setContentView(R.layout.activity_toolbar)
 
         // Cargar HomeFragment automáticamente al iniciar la Activity
-        if (savedInstanceState == null) {
-            loadFragment(HomeFragment())
-        }
-    }
 
-    private fun loadFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainer, fragment)
-            .commit()
     }
 }
