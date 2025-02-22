@@ -1,6 +1,32 @@
 <resources>
-    <string name="app_name">Albergue-Android</string>
+    <string name="app_name">Albergue Android</string>
     <string name="app_title">Casa Comunitaria Felipe Carrillo Puerto</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="mision_title">Misión</string>
+    <string name="mision_text">Casa Comunitaria, en estrecha colaboración con el Instituto Nacional de los Pueblos Indígenas (INPI), tiene como misión primordial consolidarse como un epicentro de empoderamiento y desarrollo integral para las comunidades indígenas. Nos comprometemos a facilitar el acceso a recursos, servicios y oportunidades que fortalezcan las capacidades de los beneficiarios, preservando sus tradiciones culturales y fomentando la inclusión social.</string>
+
+    <string name="vision_title">Visión</string>
+    <string name="vision_text">Aspiramos a ser un modelo de gestión comunitaria respaldado por el INPI,
+        destacando por nuestra eficiencia en la canalización de recursos,
+        la implementación de programas innovadores y la promoción de la autodeterminación.
+        Buscamos impulsar un cambio significativo en la calidad de vida de las comunidades,
+        contribuyendo a la construcción de un futuro donde la autosuficiencia y el bienestar sean la norma.</string>
+
+    <string name="beneficios_title">Beneficios</string>
+    <string name="beneficios_text">- Alimentación gratuita de lunes a viernes, incluyendo desayuno, almuerzo y cena, garantizando una dieta balanceada.
+        \n- Hospedaje sin costo alguno, brindando un ambiente seguro y cómodo para vivir durante el período de estudios.
+        \n- Oportunidad de convivencia en un entorno sano y respetuoso con otros compañeros becarios, promoviendo la integración y el apoyo mutuo.
+        \n- Espacios adecuados y cómodos para el estudio, realización de tareas y actividades necesarias para el desarrollo académico.
+        \n- Acceso a talleres y actividades de desarrollo personal, como cursos de liderazgo, trabajo en equipo y habilidades para la vida.
+        \n- Soporte emocional y acompañamiento en el proceso educativo a través de consejería y tutoría personalizada.</string>
+
+    <string name="responsabilidades_title">Responsabilidades</string>
+    <string name="responsabilidades_text">- Respetar y cumplir los horarios establecidos, tanto para la entrada y salida de la casa como para los tiempos de alimentación.
+        \n- Mantener una actitud de respeto y cordialidad hacia el personal administrativo, operativo, y los demás compañeros becarios.
+        \n- Participar activamente en las tareas de limpieza asignadas, respetando el horario y los turnos acordados.
+        \n- Cuidar y mantener en buen estado todas las áreas y bienes comunes de la casa, haciendo uso responsable de los recursos disponibles.
+        \n- Permanecer en la Casa Comunitaria durante los días laborales y notificar cualquier ausencia de manera oportuna al personal encargado.
+        \n- Los padres de familia deberán asistir puntualmente a las asambleas y faenas programadas, contribuyendo activamente al bienestar de la comunidad.
+        \n- Participar en las actividades comunitarias y programas de desarrollo que se organicen dentro de la Casa Comunitaria.</string>
 </resources>
