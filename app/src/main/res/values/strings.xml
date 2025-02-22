@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name">Albergue Android</string>
     <string name="mision_title">Misión</string>
     <string name="mision_text">Casa Comunitaria, en estrecha colaboración con el Instituto Nacional de los Pueblos Indígenas (INPI), tiene como misión primordial consolidarse como un epicentro de empoderamiento y desarrollo integral para las comunidades indígenas. Nos comprometemos a facilitar el acceso a recursos, servicios y oportunidades que fortalezcan las capacidades de los beneficiarios, preservando sus tradiciones culturales y fomentando la inclusión social.</string>
 
