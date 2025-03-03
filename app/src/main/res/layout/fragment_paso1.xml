@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <!-- Instrucciones -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/instructions_background"
+        android:padding="16dp"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¡Bienvenido al Proceso de Solicitud!"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/b41e46"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Este proceso se divide en tres sencillos pasos para recopilar la información necesaria. En esta primera etapa, te pedimos que completes cuidadosamente todos los campos solicitados.\n\nAsegúrate de tener a mano todos los datos personales y familiares que te solicitaremos. Recuerda que los detalles que proporciones serán utilizados para generar tu documento de solicitud, ¡así que cada dato cuenta!\n\nImportante: Todos los campos son obligatorios. No podrás avanzar al Paso 2 hasta que hayas completado todo correctamente. Antes de continuar, tómate un momento para verificar que la información sea precisa y completa.\n\nSi todo está en orden, ¡estás a un paso más cerca de completar tu solicitud!"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:lineSpacingExtra="4dp"/>
+    </LinearLayout>
+
+    <!-- Casilla de verificación -->
+    <CheckBox
+        android:id="@+id/checkTerms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="He leído y acepto los Términos y Condiciones"
+        android:textSize="14sp"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Botón de inicio -->
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comenzar Paso 1"
+        android:backgroundTint="@color/b41e46"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:enabled="false"
+        android:layout_gravity="center"/>
+
+    <!-- Formulario extenso (inicialmente oculto) -->
+    <ScrollView
+        android:id="@+id/scrollFormulario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Sección 1: Información Personal -->
+            <LinearLayout
+                android:id="@+id/section_personal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/section_background"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Información Personal"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/b41e46"
+                    android:layout_marginBottom="8dp"/>
+
+                <!-- Campos de Información Personal -->
+                <EditText
+                    android:id="@+id/et_curp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="CURP"
+                    android:inputType="textCapCharacters"
+                    android:imeOptions="actionNext"/>
+
+                <EditText
+                    android:id="@+id/et_nombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nombre(s)"
+                    android:inputType="textCapWords"
+                    android:imeOptions="actionNext"/>
+
+                <EditText
+                    android:id="@+id/et_primer_apellido"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Primer Apellido"
+                    android:inputType="textCapWords"
+                    android:imeOptions="actionNext"/>
+
+                <EditText
+                    android:id="@+id/et_segundo_apellido"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Segundo Apellido"
+                    android:inputType="textCapWords"
+                    android:imeOptions="actionNext"/>
+
+                <EditText
+                    android:id="@+id/et_fecha_nacimiento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Fecha de Nacimiento"
+                    android:inputType="date"
+                    android:imeOptions="actionNext"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sexo"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <RadioGroup
+                    android:id="@+id/rg_sexo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_hombre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hombre"
+                        android:layout_marginEnd="16dp"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_mujer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mujer"
+                        android:layout_marginEnd="16dp"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_otro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Otro"/>
+                </RadioGroup>
+
+                <EditText
+                    android:id="@+id/et_telefono_fijo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Teléfono Fijo"
+                    android:inputType="phone"
+                    android:imeOptions="actionNext"/>
+
+                <!-- Teléfono Móvil -->
+                <EditText
+                    android:id="@+id/et_telefono_movil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Teléfono Móvil"
+                    android:inputType="phone"
+                    android:imeOptions="actionNext"/>
+
+                <!-- Correo Electrónico -->
+                <EditText
+                    android:id="@+id/et_correo_electronico"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Correo Electrónico"
+                    android:inputType="textEmailAddress"
+                    android:imeOptions="actionNext"/>
+
+                <!-- Pueblo Indígena (Spinner) -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pueblo Indígena al que pertenece"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <Spinner
+                    android:id="@+id/spinner_pueblo_indigena"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/pueblos_indigenas"
+                    android:prompt="@string/seleccione_pueblo_indigena"/>
+
+                <!-- Lengua Indígena -->
+                <EditText
+                    android:id="@+id/et_lengua_indigena"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Lengua Indígena"
+                    android:inputType="textCapWords"
+                    android:imeOptions="actionNext"/>
+
+            </LinearLayout>
+
+            <!-- Sección 2: Dirección -->
+            <LinearLayout
+                android:id="@+id/section_direccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/section_background"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Datos de la Dirección"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/b41e46"
+                    android:layout_marginBottom="8dp"/>
+
+                <!-- Campos de Dirección -->
+                <EditText
+                    android:id="@+id/et_estado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Estado"
+                    android:inputType="text"/>
+
+                <EditText
+                    android:id="@+id/et_municipio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Municipio"
+                    android:inputType="text"/>
+
+                <EditText
+                    android:id="@+id/et_localidad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Localidad"
+                    android:inputType="textCapWords"
+                    android:imeOptions="actionNext"/>
+
+                <EditText
+                    android:id="@+id/et_comunidad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Comunidad"
+                    android:inputType="textCapWords"
+                    android:imeOptions="actionNext"/>
+
+            </LinearLayout>
+
+            <!-- Sección 3: Datos de la Madre -->
+            <LinearLayout
+                android:id="@+id/section_madre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/section_background"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Datos de la Madre"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/b41e46"
+                    android:layout_marginBottom="8dp"/>
+
+                <!-- Estado de la Madre (Spinner) -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Estado de la madre"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"/>
+
+                <Spinner
+                    android:id="@+id/spinner_estado_madre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/estados_madre"
+                    android:prompt="@string/seleccione_estado_madre"/>
+
+                <!-- CURP de la Madre (en mayúsculas) -->
+                <EditText
+                    android:id="@+id/et_curp_madre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="CURP de la Madre"
+                    android:inputType="textCapCharacters"
+                    android:imeOptions="actionNext"/>
+
+                <!-- Nombre de la Madre (primera letra en mayúscula) -->
+                <EditText
+                    android:id="@+id/et_nombre_madre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nombre(s) de la Madre"
+                    android:inputType="textCapWords"
+                    android:imeOptions="actionNext"/>
+
+                <!-- Primer Apellido de la Madre (primera letra en mayúscula) -->
+                <EditText
+                    android:id="@+id/et_primer_apellido_madre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Primer Apellido de la Madre"
+                    android:inputType="textCapWords"
+                    android:imeOptions="actionNext"/>
+
+                <!-- Segundo Apellido de la Madre (primera letra en mayúscula) -->
+                <EditText
+                    android:id="@+id/et_segundo_apellido_madre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Segundo Apellido de la Madre"
+                    android:inputType="textCapWords"
+                    android:imeOptions="actionNext"/>
+
+                <!-- Fecha de Nacimiento de la Madre -->
+                <EditText
+                    android:id="@+id/et_fecha_nacimiento_madre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Fecha de Nacimiento de la Madre"
+                    android:inputType="date"
+                    android:imeOptions="actionNext"/>
+
+                <!-- Entidad de Nacimiento de la Madre (primera letra en mayúscula) -->
+                <EditText
+                    android:id="@+id/et_edo_nacimiento_madre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Entidad de Nacimiento de la Madre"
+                    android:inputType="textCapWords"
+                    android:imeOptions="actionNext"/>
+
+            </LinearLayout>
+
+            <!-- Sección 4: Datos del Padre -->
+            <LinearLayout
+                android:id="@+id/section_padre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/section_background"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Datos del Padre"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/b41e46"
+                    android:layout_marginBottom="8dp"/>
+
+                <!-- Estado del Padre (Spinner) -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Estado del padre"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"/>
+
+                <Spinner
+                    android:id="@+id/spinner_estado_padre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/estados_padre"
+                    android:prompt="@string/seleccione_estado_padre"/>
+
+                <!-- CURP del Padre (en mayúsculas) -->
+                <EditText
+                    android:id="@+id/et_curp_padre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="CURP del Padre"
+                    android:inputType="textCapCharacters"
+                    android:imeOptions="actionNext"/>
+
+                <!-- Nombre del Padre (primera letra en mayúscula) -->
+                <EditText
+                    android:id="@+id/et_nombre_padre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nombre(s) del Padre"
+                    android:inputType="textCapWords"
+                    android:imeOptions="actionNext"/>
+
+                <!-- Primer Apellido del Padre (primera letra en mayúscula) -->
+                <EditText
+                    android:id="@+id/et_primer_apellido_padre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Primer Apellido del Padre"
+                    android:inputType="textCapWords"
+                    android:imeOptions="actionNext"/>
+
+                <!-- Segundo Apellido del Padre (primera letra en mayúscula) -->
+                <EditText
+                    android:id="@+id/et_segundo_apellido_padre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Segundo Apellido del Padre"
+                    android:inputType="textCapWords"
+                    android:imeOptions="actionNext"/>
+
+                <!-- Fecha de Nacimiento del Padre -->
+                <EditText
+                    android:id="@+id/et_fecha_nacimiento_padre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Fecha de Nacimiento del Padre"
+                    android:inputType="date"
+                    android:imeOptions="actionNext"/>
+
+                <!-- Entidad de Nacimiento del Padre (primera letra en mayúscula) -->
+                <EditText
+                    android:id="@+id/et_edo_nacimiento_padre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Entidad de Nacimiento del Padre"
+                    android:inputType="textCapWords"
+                    android:imeOptions="actionNext"/>
+
+            </LinearLayout>
+
+            <!-- Sección 5: Datos del Tutor -->
+            <LinearLayout
+                android:id="@+id/section_tutor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/section_background"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Datos del Tutor"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/b41e46"
+                    android:layout_marginBottom="8dp"/>
+
+                <!-- Parentesco (Spinner) -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Parentesco"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"/>
+
+                <Spinner
+                    android:id="@+id/spinner_parentesco_tutor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/parentescos_tutor"
+                    android:prompt="@string/seleccione_parentesco_tutor"/>
+
+                <!-- CURP del Tutor (en mayúsculas) -->
+                <EditText
+                    android:id="@+id/et_curp_tutor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="CURP del Tutor"
+                    android:inputType="textCapCharacters"
+                    android:imeOptions="actionNext"/>
+
+                <!-- Nombre del Tutor (primera letra en mayúscula) -->
+                <EditText
+                    android:id="@+id/et_nombre_tutor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nombre(s) del Tutor"
+                    android:inputType="textCapWords"
+                    android:imeOptions="actionNext"/>
+
+                <!-- Primer Apellido del Tutor (primera letra en mayúscula) -->
+                <EditText
+                    android:id="@+id/et_primer_apellido_tutor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Primer Apellido del Tutor"
+                    android:inputType="textCapWords"
+                    android:imeOptions="actionNext"/>
+
+                <!-- Segundo Apellido del Tutor (primera letra en mayúscula) -->
+                <EditText
+                    android:id="@+id/et_segundo_apellido_tutor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Segundo Apellido del Tutor"
+                    android:inputType="textCapWords"
+                    android:imeOptions="actionNext"/>
+
+                <!-- Fecha de Nacimiento del Tutor -->
+                <EditText
+                    android:id="@+id/et_fecha_nacimiento_tutor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Fecha de Nacimiento del Tutor"
+                    android:inputType="date"
+                    android:imeOptions="actionNext"/>
+
+                <!-- Entidad de Nacimiento del Tutor (primera letra en mayúscula) -->
+                <EditText
+                    android:id="@+id/et_edo_nacimiento_tutor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Entidad de Nacimiento del Tutor"
+                    android:inputType="textCapWords"
+                    android:imeOptions="actionNext"/>
+
+            </LinearLayout>
+
+            <!-- Botón para avanzar al siguiente paso -->
+            <Button
+                android:id="@+id/btn_siguiente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Siguiente"
+                android:layout_gravity="end"
+                android:backgroundTint="@color/red"
+                android:textColor="@color/white"
+                android:layout_marginTop="16dp"/>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>

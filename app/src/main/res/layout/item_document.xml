@@ -1,0 +1,98 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:background="@drawable/document_item_background"
+    android:layout_marginBottom="8dp">
+
+    <!-- Nombre del documento -->
+    <TextView
+        android:id="@+id/tvDocumentName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:text="Nombre del Documento" />
+
+    <!-- Estado del documento -->
+    <TextView
+        android:id="@+id/tvDocumentStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:padding="4dp"
+        android:textColor="@android:color/white"
+        android:layout_marginStart="8dp" />
+
+    <!-- Contenedor de botones -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="8dp">
+
+        <!-- Botón "Ver" (solo ícono) -->
+        <FrameLayout
+            android:id="@+id/btnView"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/custom_button_background"
+        android:layout_marginStart="8dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_eye"
+            android:layout_gravity="center" />
+    </FrameLayout>
+
+    <!-- Botón "Editar" (solo ícono) -->
+    <FrameLayout
+        android:id="@+id/btnEdit"
+    android:layout_width="40dp"
+    android:layout_height="40dp"
+    android:background="@drawable/custom_button_background"
+    android:layout_marginStart="8dp"
+    android:visibility="gone">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_edit"
+        android:layout_gravity="center" />
+</FrameLayout>
+
+    <!-- Botón "Eliminar" (solo ícono) -->
+<FrameLayout
+android:id="@+id/btnDelete"
+    android:layout_width="40dp"
+    android:layout_height="40dp"
+    android:background="@drawable/custom_button_background"
+    android:layout_marginStart="8dp"
+    android:visibility="gone">
+
+<ImageView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:src="@drawable/ic_delete"
+android:layout_gravity="center" />
+    </FrameLayout>
+
+    <!-- Botón "Subir" (solo texto) -->
+<Button
+android:id="@+id/btnUpload"
+android:layout_width="wrap_content"
+android:layout_height="40dp"
+android:text="Subir"
+android:background="@drawable/custom_button_background"
+android:textColor="@color/black"
+android:textSize="14sp"
+android:gravity="center"
+android:layout_marginStart="8dp"
+android:visibility="gone"
+android:contentDescription="Subir" />
+    </LinearLayout>
+    </LinearLayout>

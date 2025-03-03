@@ -64,6 +64,8 @@ dependencies {
 
     implementation(libs.sweetalert)
 
+    implementation(libs.itext.core)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
