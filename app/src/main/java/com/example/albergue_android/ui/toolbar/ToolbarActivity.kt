@@ -21,9 +21,9 @@ class ToolbarActivity : AppCompatActivity() {
             insets
         }
 
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, CallFragment())
-            .commit()
+//        supportFragmentManager.beginTransaction()
+//            .replace(R.id.fragment_container, CallFragment())
+//            .commit()
 
     }
 
