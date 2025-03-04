@@ -8,4 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#B41E46</color>
+    <color name="colorPrimary">#b41e46</color>
+    <color name="colorMenuBackground">#D32F2F</color>
+    <color name="menuBackgroundTransparent">#B3B41E46</color>
+
 </resources>
