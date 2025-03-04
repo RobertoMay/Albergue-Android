@@ -21,10 +21,10 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.toolbar.ToolbarActivity"
+            android:name=".ui.home.HomeActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.AppCompat.Light">
+            android:theme="@style/Theme.AlbergueAndroid">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

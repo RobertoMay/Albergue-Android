@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="NavigationItemStyle">
+        <item name="android:background">#FFFFFF</item> <!-- Color de la línea -->
+    </style>
+
+    <style name="NavigationViewStyle">
+        <item name="android:elevation">10dp</item> <!-- Agrega sombra -->
+    </style>
+
+
+</resources>
