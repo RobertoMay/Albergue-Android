@@ -1,0 +1,16 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#F9F9F9"/> <!-- Fondo suave -->
+            <corners android:radius="8dp"/> <!-- Bordes redondeados -->
+            <stroke android:width="4dp" android:color="#00C853"/> <!-- Borde verde -->
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#00000000"/> <!-- Fondo transparente -->
+            <corners android:radius="8dp"/>
+            <padding android:left="4dp"/> <!-- Espacio para el borde -->
+        </shape>
+    </item>
+</layer-list>

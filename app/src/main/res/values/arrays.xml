@@ -1,0 +1,53 @@
+<!-- res/values/arrays.xml -->
+<resources>
+    <string-array name="pueblos_indigenas">
+        <item>Seleccione una opción</item>
+        <item>Indígena</item>
+        <item>Afroamericano</item>
+    </string-array>
+
+    <string-array name="estados_madre">
+        <item>Seleccione una opción</item>
+        <item>Finado</item>
+        <item>Ausente</item>
+        <item>Vivo</item>
+    </string-array>
+
+    <string-array name="estados_padre">
+        <item>Seleccione una opción</item>
+        <item>Finado</item>
+        <item>Ausente</item>
+        <item>Vivo</item>
+    </string-array>
+
+    <string-array name="parentescos_tutor">
+        <item>Seleccione una opción</item>
+        <item>Padre</item>
+        <item>Madre</item>
+        <item>Tío</item>
+        <item>Tía</item>
+        <item>Abuelo</item>
+        <item>Abuela</item>
+        <item>Hermano</item>
+        <item>Hermana</item>
+    </string-array>
+
+    <string-array name="tipo_escuela_options">
+        <item>Seleccione una opción</item>
+        <item>Pública</item>
+        <item>Comunitaria</item>
+    </string-array>
+    <string-array name="escolaridad_options">
+        <item>Seleccione una opción</item>
+        <item>Prescolar</item>
+        <item>Primaria</item>
+        <item>Secundaria</item>
+        <item>Bachillerato</item>
+        <item>Superior</item>
+    </string-array>
+
+    <string name="seleccione_pueblo_indigena">Seleccione un pueblo indígena</string>
+    <string name="seleccione_estado_madre">Seleccione el estado de la madre</string>
+    <string name="seleccione_estado_padre">Seleccione el estado del padre</string>
+    <string name="seleccione_parentesco_tutor">Seleccione el parentesco del tutor</string>
+</resources>

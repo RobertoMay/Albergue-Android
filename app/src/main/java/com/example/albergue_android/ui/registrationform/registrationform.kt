@@ -25,9 +25,10 @@ import retrofit2.Callback
 import retrofit2.Response
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import android.graphics.Color;
+import androidx.fragment.app.DialogFragment
 
 
-class RegistrationFormFragment : Fragment() {
+class RegistrationFormFragment : DialogFragment() {
 
     private lateinit var etFullNames: TextInputEditText
     private lateinit var etFirstLastName: TextInputEditText
@@ -78,6 +79,15 @@ class RegistrationFormFragment : Fragment() {
         }
 
         return view
+    }
+
+    override fun onStart() {
+        super.onStart()
+        // Configurar el tamaño del diálogo
+        dialog?.window?.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
     }
 
     private fun showLoading(show: Boolean) {
@@ -152,17 +162,34 @@ class RegistrationFormFragment : Fragment() {
             override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                 showLoading(false)
                 if (response.isSuccessful && response.body() != null) {
+                    // Éxito: mostrar diálogo de éxito
                     showSuccessDialog()
                     clearForm()
                 } else {
+                    // Error: imprimir detalles en la consola y mostrar diálogo de error
+                    val errorBody = response.errorBody()?.string() // Obtener el cuerpo del error
                     val errorMessage = response.body()?.details ?: "Error en el registro"
+
+                    // Imprimir detalles en la consola
+                    println("Error en el registro:")
+                    println("Código de estado: ${response.code()}")
+                    println("Mensaje de error: $errorMessage")
+                    println("Cuerpo del error: $errorBody")
+
+                    // Mostrar diálogo de error con el mensaje del backend
                     showErrorDialog(errorMessage)
                 }
             }
 
             override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
                 showLoading(false)
-                showErrorDialog("Error en la conexión")
+
+                // Imprimir el error en la consola
+                println("Error en la conexión:")
+                t.printStackTrace()
+
+                // Mostrar diálogo de error
+                showErrorDialog("Error en la conexión: ${t.message}")
             }
         })
     }

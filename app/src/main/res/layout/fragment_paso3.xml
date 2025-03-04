@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <!-- Contenedor principal -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Contenedor de instrucciones -->
+        <LinearLayout
+            android:id="@+id/instructionsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/instructions_background"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <!-- Texto de bienvenida -->
+            <TextView
+                android:id="@+id/tvWelcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bienvenido, [Nombre]"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Instrucciones -->
+            <TextView
+                android:id="@+id/tvInstructions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="En esta tercera etapa te invitamos a subir todos los documentos necesarios tanto tuyos como de tu tutor. Este paso es crucial para concluir en tu proceso de inscripción.\n\nTodos los documentos deben ser aprobados por el promotor antes de que puedas ser finalmente inscrito. ¡Así que asegúrate de que estén completos y sean legibles!\n\nLa solicitud de ingreso es necesario firmarla de manera autógrafa y entregar presencialmente en las instalaciones durante el periodo de inscripción."
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:lineSpacingExtra="4dp" />
+        </LinearLayout>
+
+        <!-- Botón de PDF -->
+        <Button
+            android:id="@+id/btnPdf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Descargar Solicitud"
+            android:backgroundTint="@color/b41e46"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp" />
+
+        <!-- Contenedor de documentos del alumno -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Documentos del Alumno"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="16dp" />
+
+            <!-- RecyclerView para documentos del alumno -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvStudentDocuments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp" />
+        </LinearLayout>
+
+        <!-- Contenedor de documentos del tutor -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Documentos del Tutor"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="16dp" />
+
+            <!-- RecyclerView para documentos del tutor -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvTutorDocuments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp" />
+        </LinearLayout>
+
+        <!-- Contenedor de comentarios del promotor -->
+        <LinearLayout
+            android:id="@+id/commentsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_marginTop="20dp">
+
+            <!-- Título de los comentarios -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Comentarios del Promotor"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="16dp" />
+
+
+            <!-- Los comentarios se agregarán dinámicamente aquí -->
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Animación de carga (pantalla completa) -->
+    <FrameLayout
+        android:id="@+id/loadingOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:visibility="gone">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieLoading"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            app:lottie_rawRes="@raw/loading"
+            app:lottie_autoPlay="false"
+            app:lottie_loop="true" />
+    </FrameLayout>
+</RelativeLayout>

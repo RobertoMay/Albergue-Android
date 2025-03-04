@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <!-- Título de la convocatoria -->
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:paddingBottom="8dp"/>
+
+    <!-- Fechas de la convocatoria -->
+    <TextView
+        android:id="@+id/dateTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:paddingBottom="16dp"/>
+
+    <!-- Botón de registro -->
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Regístrate"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:background="@drawable/custom_button"
+        android:elevation="4dp"
+        android:stateListAnimator="@null"
+    android:padding="12dp"
+    android:visibility="gone"/>
+
+    <!-- Mensaje cuando no hay convocatorias -->
+    <TextView
+        android:id="@+id/noConvocatoriaTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No hay convocatorias disponibles en este momento."
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:padding="16dp"
+        android:visibility="gone"/>
+</LinearLayout>

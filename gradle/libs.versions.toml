@@ -12,6 +12,7 @@ appcompat = "1.7.0"
 material = "1.12.0"
 activity = "1.10.0"
 constraintlayout = "2.2.0"
+itext = "7.1.15"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -38,8 +39,12 @@ retrofit = "com.squareup.retrofit2:retrofit:2.9.0"
 retrofit-converter-gson = "com.squareup.retrofit2:converter-gson:2.9.0"
 gson = "com.google.code.gson:gson:2.8.9"
 sweetalert = "com.github.f0ris.sweetalert:library:1.5.6"
+
 androidx-drawerlayout = { module = "androidx.drawerlayout:drawerlayout", version = "1.2.0" }
 google-material = { module = "com.google.android.material:material", version = "1.9.0" }
+
+itext-core = { module = "com.itextpdf:itext7-core", version.ref = "itext" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

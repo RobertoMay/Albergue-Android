@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Título -->
+        <TextView
+            android:id="@+id/tvConvocatoriaTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Título de la Convocatoria"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
+
+        <!-- Descripción -->
+        <TextView
+            android:id="@+id/tvConvocatoriaDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Descripción breve de la convocatoria"
+            android:textSize="14sp"
+            android:textColor="#000"
+            android:paddingTop="8dp" />
+
+        <!-- Fechas -->
+        <TextView
+            android:id="@+id/tvConvocatoriaDates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha de inicio - Fecha de fin"
+            android:textSize="12sp"
+            android:textColor="@color/gray"
+            android:paddingTop="4dp" />
+
+        <!-- Botón de inscripción -->
+        <Button
+            android:id="@+id/btnInscribirse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Inscribirse"
+            android:visibility="gone"
+            android:backgroundTint="@color/red"
+            android:textColor="@color/white"
+            android:layout_marginTop="12dp"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
