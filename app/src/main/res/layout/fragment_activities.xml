@@ -16,8 +16,8 @@
             android:id="@+id/banner"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:background="@drawable/banner_background"
-        android:gravity="center"
+            android:background="@color/red"
+            android:gravity="center"
         android:orientation="vertical"
         android:padding="16dp">
 

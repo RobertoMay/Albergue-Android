@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Carrusel -->
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/image_slider"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:iss_auto_cycle="true"
+            app:iss_delay="3000"
+            app:iss_period="3000"
+            app:iss_placeholder="@color/black"/>
+
+        <!-- Título -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Casa Comunitaria Felipe Carrillo Puerto"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="#b41e46"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp"/>
+
+        <!-- Sección "Sobre Nosotros" -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#F8F8F8"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sobre Nosotros"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#b41e46"
+                android:paddingBottom="8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="La Casa Comunitaria del Estudiante Indígena es un espacio dedicado al apoyo y fortalecimiento de jóvenes de comunidades indígenas..."
+                android:textSize="16sp"
+                android:textColor="@android:color/darker_gray"/>
+
+            <!-- Botón Leer Más -->
+            <Button
+                android:id="@+id/btn_about"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Leer más"
+                android:textColor="@android:color/white"
+                android:backgroundTint="#b41e46"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:layout_marginTop="10dp"/>
+        </LinearLayout>
+
+        <!-- Sección "Actividades" -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/activitie"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Actividades"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#b41e46"
+                android:paddingTop="16dp"
+                android:paddingBottom="8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ofrecemos una variedad de actividades diseñadas para todos los intereses..."
+                android:textSize="16sp"
+                android:textColor="@android:color/darker_gray"/>
+
+            <!-- Botón Leer Más -->
+            <Button
+                android:id="@+id/btn_activities"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Leer más"
+                android:textColor="@android:color/white"
+                android:backgroundTint="#b41e46"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:layout_marginTop="10dp"/>
+        </LinearLayout>
+
+        <!-- Sección "Inscripción" -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F8F8F8"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Inscripción"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#b41e46"
+                android:paddingBottom="8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="La Casa Comunitaria abre sus puertas anualmente para nuevas inscripciones..."
+                android:textSize="16sp"
+                android:textColor="@android:color/darker_gray"/>
+
+            <!-- Botón Leer Más -->
+            <Button
+                android:id="@+id/btn_registration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Leer más"
+                android:textColor="@android:color/white"
+                android:backgroundTint="#b41e46"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:layout_marginTop="10dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

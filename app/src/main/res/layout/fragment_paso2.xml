@@ -1,0 +1,884 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <ImageButton
+        android:id="@+id/btnRetroceder"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_arrow_back"
+        android:background="@drawable/bg_circular_button_ripple"
+        android:contentDescription="@string/retroceder"
+        android:layout_margin="16dp"
+        android:layout_gravity="start"
+        app:tint="@color/white"
+        android:padding="12dp"/>
+
+    <!-- Instrucciones -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/instructions_background"
+        android:padding="16dp"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¡Estás en el Paso 2!"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/b41e46"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¡Excelente trabajo al completar el Paso 1! Ahora, en esta segunda etapa, vamos a recopilar información adicional sobre la casa o comedor y tus condiciones de acceso.\n\nAsegúrate de proporcionar todos los detalles requeridos con la mayor precisión posible. Recuerda que esta información es crucial para el proceso de solicitud y garantizará que recibas el apoyo que necesitas."
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:lineSpacingExtra="4dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lo que necesitarás:"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1. Información sobre la casa o comedor, incluyendo su nombre y ubicación.\n2. Detalles sobre tu medio de acceso y posibles riesgos en tu ruta.\n3. Información acerca de cualquier discapacidad, si corresponde.\n4. Datos académicos relevantes para tu situación."
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:lineSpacingExtra="4dp"/>
+    </LinearLayout>
+
+    <!-- Botón de inicio -->
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comenzar Paso 2"
+        android:backgroundTint="@color/b41e46"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_gravity="center"/>
+
+    <!-- Formulario extenso (inicialmente oculto) -->
+    <ScrollView
+        android:id="@+id/scrollFormulario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Sección 1: Información de la casa o comedor -->
+            <LinearLayout
+                android:id="@+id/section_casa_comedor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/section_background"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Datos de Identificación de la Casa o Comedor"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/b41e46"
+                    android:layout_marginBottom="8dp"/>
+
+                <!-- Campos de la sección -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Comunidad -->
+                    <EditText
+                        android:id="@+id/et_comunidad_casa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Comunidad donde se localiza"
+                        android:inputType="textCapWords"
+                        android:imeOptions="actionNext"/>
+
+                    <!-- Localidad -->
+                    <EditText
+                        android:id="@+id/et_localidad_casa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Localidad donde se localiza"
+                        android:inputType="textCapWords"
+                        android:imeOptions="actionNext"/>
+
+                    <!-- Nombre de la casa o comedor -->
+                    <EditText
+                        android:id="@+id/et_nombre_casa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Nombre de la Casa o Comedor"
+                        android:inputType="textCapWords"
+                        android:imeOptions="actionNext"/>
+
+                    <!-- Centro Coordinador -->
+                    <EditText
+                        android:id="@+id/et_centro_coordinador"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Centro Coordinador"
+                        android:inputType="textCapWords"
+                        android:imeOptions="actionNext"/>
+                </LinearLayout>
+
+                <!-- Selección del tipo de casa o comedor -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Seleccione:"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <RadioGroup
+                    android:id="@+id/rg_tipo_casa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/rb_casa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Casa"
+                        android:layout_marginBottom="8dp"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_comedor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Comedor"
+                        android:layout_marginBottom="8dp"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_escolar_ninez"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Escolar de la niñez"
+                        android:layout_marginBottom="8dp"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_comunitario_estudiante"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Comunitario del estudiante"
+                        android:layout_marginBottom="8dp"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_universitario"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Universitario"/>
+                </RadioGroup>
+            </LinearLayout>
+
+            <!-- Sección 2: Traslado -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/section_background"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Traslado De La Casa-Comunidad De Procedencia"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <!-- Medio de Acceso -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Medio De Acceso"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp" />
+
+                <RadioGroup
+                    android:id="@+id/medioAccesoGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/rbPie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="A Pie" />
+
+                    <RadioButton
+                        android:id="@+id/rbBicicleta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="En Bicicleta" />
+
+                    <RadioButton
+                        android:id="@+id/rbVehiculo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="En Vehículo" />
+
+                    <RadioButton
+                        android:id="@+id/rbOtroAcceso"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Otro" />
+                </RadioGroup>
+
+                <EditText
+                    android:id="@+id/especifAcceso"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Especifique El Medio De Acceso"
+                    android:visibility="gone"
+                    android:inputType="text" />
+
+                <!-- Riesgo de Acceso -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Riesgo De Acceso"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp" />
+
+                <RadioGroup
+                    android:id="@+id/riesgoAccesoGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/rbDeslaves"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Deslaves" />
+
+                    <RadioButton
+                        android:id="@+id/rbBarrancas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Barrancas" />
+
+                    <RadioButton
+                        android:id="@+id/rbRioCrecido"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rio Crecido" />
+
+                    <RadioButton
+                        android:id="@+id/rbInundacion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Inundación" />
+
+                    <RadioButton
+                        android:id="@+id/rbOtroRiesgo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Otro" />
+                </RadioGroup>
+
+                <EditText
+                    android:id="@+id/especifRiesgo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Especifique El Riesgo De Acceso"
+                    android:visibility="gone"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+            <!-- Sección 3: Discapacidades -->
+            <LinearLayout
+                android:id="@+id/seccionDiscapacidades"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/section_background"
+                android:layout_marginBottom="16dp"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:id="@+id/contenedorDiscapacidad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:text="¿Presenta Alguna Discapacidad?"
+                        android:textColor="@color/b41e46"
+                        android:textSize="16sp" />
+
+                    <RadioGroup
+                        android:id="@+id/rgDiscapacidad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rbDiscapacidadNo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No"
+                            android:checked="true" />
+
+                        <RadioButton
+                            android:id="@+id/rbDiscapacidadSi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sí" />
+                    </RadioGroup>
+
+                    <LinearLayout
+                        android:id="@+id/contenedorTipoDiscapacidad"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        android:paddingTop="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:text="¿Qué Tipo De Discapacidad?"
+                            android:textSize="16sp" />
+
+                        <RadioGroup
+                            android:id="@+id/rgTipoDiscapacidad"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <RadioButton
+                                android:id="@+id/rbMotriz"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Motriz" />
+
+                            <RadioButton
+                                android:id="@+id/rbAuditivo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Auditivo" />
+
+                            <RadioButton
+                                android:id="@+id/rbVisual"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Visual" />
+
+                            <RadioButton
+                                android:id="@+id/rbMental"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Mental" />
+
+                            <RadioButton
+                                android:id="@+id/rbOtroDiscapacidad"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Otro" />
+                        </RadioGroup>
+
+                        <EditText
+                            android:id="@+id/etEspecifDiscapacidad"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Especifique La Discapacidad Que Presenta"
+                            android:visibility="gone"
+                            android:inputType="text" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <!-- Sección 4: Datos académicos -->
+            <LinearLayout
+                android:id="@+id/seccionDatosAcademicos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/section_background"
+                android:layout_marginBottom="16dp"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Datos Académicos"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/b41e46"
+                    android:layout_marginBottom="8dp"/>
+
+                <LinearLayout
+                    android:id="@+id/datosAcademicosSection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:text="Tipo de Escuela"/>
+
+                        <Spinner
+                            android:id="@+id/tipoEscuela"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/tipo_escuela_options" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/cctContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="CCT"/>
+
+                        <EditText
+                            android:id="@+id/cct"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:inputType="text" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:text="Nombre de la Escuela"/>
+
+                        <EditText
+                            android:id="@+id/nombreEscuela"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:hint="Ingrese el nombre de la Institución educativa"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:text="Grado Escolar"/>
+
+                        <Spinner
+                            android:id="@+id/escolaridad"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/escolaridad_options" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/anosCursadosContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:text="Años Cursados"
+                            android:layout_marginBottom="8dp"/>
+
+                        <RadioGroup
+                            android:id="@+id/anosCursadosGroup"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                        </RadioGroup>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:text="Tipo de Curso"/>
+
+                        <RadioGroup
+                            android:id="@+id/tipoCursoGroup"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <RadioButton
+                                android:id="@+id/anual"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Anual" />
+
+                            <RadioButton
+                                android:id="@+id/semestral"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Semestral" />
+
+                            <RadioButton
+                                android:id="@+id/cuatrimestral"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Cuatrimestral" />
+
+                            <RadioButton
+                                android:id="@+id/trimestral"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Trimestral" />
+                        </RadioGroup>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/seccionAntecedentesSalud"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/section_background"
+                android:layout_marginBottom="16dp"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Antecedentes de Salud"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/b41e46"
+                    android:layout_marginBottom="8dp"/>
+
+                <LinearLayout
+                    android:id="@+id/saludSection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:text="¿Es alérgico a algún alimento o medicamento?"/>
+
+                        <RadioGroup
+                            android:id="@+id/alergiaGroup"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/alergiaNo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No" />
+
+                            <RadioButton
+                                android:id="@+id/alergiaSi"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Sí" />
+                        </RadioGroup>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/alergiaDetallesContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:text="¿Qué tipo de alergia?"/>
+
+                        <EditText
+                            android:id="@+id/alergiaDetalles"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Especifique la alergia que presenta"
+                            android:inputType="text" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:text="¿Presenta problemas para respirar cotidianamente?"/>
+
+                        <RadioGroup
+                            android:id="@+id/respirarGroup"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/respirarNo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No" />
+
+                            <RadioButton
+                                android:id="@+id/respirarSi"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Sí" />
+                        </RadioGroup>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/respirarDetallesContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:text="¿Cuál es la causa?"/>
+
+                        <EditText
+                            android:id="@+id/respirarDetalles"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Especifique cuál es la razón"
+                            android:inputType="text" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:text="¿Recibe algún tratamiento médico?"/>
+
+                        <RadioGroup
+                            android:id="@+id/tratamientoGroup"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/tratamientoNo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No" />
+
+                            <RadioButton
+                                android:id="@+id/tratamientoSi"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Sí" />
+                        </RadioGroup>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/tratamientoDetallesContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="¿Cuál es la razón o tratamiento que está llevando?"/>
+
+                        <EditText
+                            android:id="@+id/tratamientoDetalles"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Especifique la razón o tratamiento"
+                            android:inputType="text" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/seccionTipoSolicitud"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/section_background"
+                android:layout_marginBottom="16dp"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tipo de Solicitud"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/b41e46"
+                    android:layout_marginBottom="8dp"/>
+
+                <LinearLayout
+                    android:id="@+id/tramiteSection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:text="¿Qué Solicita?"/>
+
+                        <RadioGroup
+                            android:id="@+id/solicitudGroup"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <RadioButton
+                                android:id="@+id/solicitud3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Solicito hospedaje y 3 comidas al día, de lunes a viernes hasta la conclusión del ciclo escolar." />
+
+                            <RadioButton
+                                android:id="@+id/solicitud2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Solicito 3 comidas al día, de lunes a viernes hasta la conclusión del ciclo escolar." />
+
+                            <RadioButton
+                                android:id="@+id/solicitud1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Solicito 2 comidas al día, de lunes a viernes hasta la conclusión del ciclo escolar." />
+                        </RadioGroup>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Botón para avanzar al siguiente paso -->
+            <Button
+                android:id="@+id/btn_siguiente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enviar"
+                android:layout_gravity="center"
+            android:backgroundTint="@color/red"
+            android:textColor="@color/white"
+            android:layout_marginTop="16dp"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
