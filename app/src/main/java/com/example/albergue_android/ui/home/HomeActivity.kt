@@ -90,7 +90,7 @@ class HomeActivity : AppCompatActivity() {
         //  Verifica si ya hay un fragmento cargado antes de reemplazarlo
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, EditCallFragment())
+                .replace(R.id.fragment_container, HomeFragment())
                 .commit()
         }
 
