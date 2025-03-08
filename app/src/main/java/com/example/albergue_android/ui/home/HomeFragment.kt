@@ -10,6 +10,10 @@ import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.albergue_android.R
+import com.example.albergue_android.ui.about.AboutFragment
+import com.example.albergue_android.ui.activities.ActivitiesFragment
+import com.example.albergue_android.ui.registration.RegistrationFragment
+import com.example.albergue_android.ui.registrationform.RegistrationFormFragment
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,10 +63,22 @@ class HomeFragment : Fragment() {
         val btnActivities = view.findViewById<Button>(R.id.btn_activities)
         val btnRegistration = view.findViewById<Button>(R.id.btn_registration)
 
-        // Asignar eventos de clic (por ahora no hacen nada)
-        btnAbout.setOnClickListener { /* Aquí irá la navegación */ }
-        btnActivities.setOnClickListener { /* Aquí irá la navegación */ }
-        btnRegistration.setOnClickListener { /* Aquí irá la navegación */ }
+        btnAbout.setOnClickListener {
+            navigateToFragment(AboutFragment())
+        }
+        btnActivities.setOnClickListener {
+            navigateToFragment(ActivitiesFragment())
+        }
+        btnRegistration.setOnClickListener {
+            navigateToFragment(RegistrationFragment())
+        }
+    }
+
+    private fun navigateToFragment(fragment: Fragment) {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 
 }
