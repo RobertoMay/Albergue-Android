@@ -44,6 +44,7 @@ androidx-drawerlayout = { module = "androidx.drawerlayout:drawerlayout", version
 google-material = { module = "com.google.android.material:material", version = "1.9.0" }
 
 itext-core = { module = "com.itextpdf:itext7-core", version.ref = "itext" }
+fragmet= "androidx.fragment:fragment-ktx:1.8.6"
 
 
 [plugins]

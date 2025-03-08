@@ -10,7 +10,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.viewModels
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.example.albergue_android.R
+import com.example.albergue_android.ui.viewmodels.EditCallViewModel
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -26,60 +29,85 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class EditCallFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
     private lateinit var startDateText: TextView
     private lateinit var endDateText: TextView
     private lateinit var errorMessageTextView: TextView
     private lateinit var updateButton: Button
 
     private val calendar = Calendar.getInstance()
-    private val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private val dateFormatMexicano = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+    private val dateFormatEstadounidense = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()) // Formato para enviar
+    // Inicializar ViewModel
+    private val viewModel: EditCallViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_edit_call, container, false)
+        return inflater.inflate(R.layout.fragment_edit_call, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         // Inicializar vistas
         startDateText = view.findViewById(R.id.startDateText)
         endDateText = view.findViewById(R.id.endDateText)
         errorMessageTextView = view.findViewById(R.id.errorMessage)
         updateButton = view.findViewById(R.id.updateButton)
 
-        val startDateButton: Button = view.findViewById(R.id.startDateButton)
-        val endDateButton: Button = view.findViewById(R.id.endDateButton)
+        // Configurar listeners
+        setupListeners()
 
-        // Configurar el listener del botón de fecha de inicio
+        // Observar la convocatoria activa
+        viewModel.activeCall.observe(viewLifecycleOwner) { call ->
+            if (call != null) {
+                // Mostrar las fechas en formato mexicano
+                startDateText.text = formatDate(call.startDate, "yyyy-MM-dd", "dd/MM/yyyy")
+                endDateText.text = formatDate(call.endDate, "yyyy-MM-dd", "dd/MM/yyyy")
+            }
+        }
+
+        // Observar errores
+        viewModel.errorMessage.observe(viewLifecycleOwner) { errorMessage ->
+            if (errorMessage != null) {
+                Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
+                println("No se que pasa $errorMessage")
+            }
+        }
+
+        // Observar éxito de actualización
+        viewModel.updateSuccess.observe(viewLifecycleOwner) { success ->
+            if (success) {
+                showSuccessDialog("Convocatoria actualizada correctamente")
+            }
+        }
+
+        // Cargar la convocatoria activa al iniciar
+        viewModel.loadActiveCall()
+    }
+
+    private fun setupListeners() {
+        val startDateButton: Button = requireView().findViewById(R.id.startDateButton)
+        val endDateButton: Button = requireView().findViewById(R.id.endDateButton)
+
         startDateButton.setOnClickListener {
             showDatePicker { selectedDate ->
-                startDateText.text = dateFormat.format(selectedDate.time)
+                startDateText.text = dateFormatMexicano.format(selectedDate.time) // Mostrar en formato mexicano
             }
         }
 
-        // Configurar el listener del botón de fecha de fin
         endDateButton.setOnClickListener {
             showDatePicker { selectedDate ->
-                endDateText.text = dateFormat.format(selectedDate.time)
+                endDateText.text = dateFormatMexicano.format(selectedDate.time) // Mostrar en formato mexicano
             }
         }
 
-        // Configurar el listener del botón de actualizar
         updateButton.setOnClickListener {
             validateDates()
         }
-
-        return view
     }
 
     private fun showDatePicker(onDateSelected: (Calendar) -> Unit) {
@@ -110,14 +138,44 @@ class EditCallFragment : Fragment() {
             return
         }
 
-        val startDate = dateFormat.parse(startDateStr)
-        val endDate = dateFormat.parse(endDateStr)
+        // Convertir las fechas a formato estadounidense antes de validar
+        val startDate = dateFormatMexicano.parse(startDateStr)
+        val endDate = dateFormatMexicano.parse(endDateStr)
 
         if (startDate != null && endDate != null && startDate.before(endDate)) {
             errorMessageTextView.visibility = View.GONE
-            Toast.makeText(requireContext(), "Fechas actualizadas correctamente", Toast.LENGTH_SHORT).show()
+            // Convertir las fechas a formato estadounidense antes de enviar
+            val startDateFormatted = dateFormatEstadounidense.format(startDate)
+            val endDateFormatted = dateFormatEstadounidense.format(endDate)
+            updateCall(startDateFormatted, endDateFormatted)
         } else {
             errorMessageTextView.visibility = View.VISIBLE
         }
+    }
+
+    private fun updateCall(startDate: String, endDate: String) {
+        val activeCall = viewModel.activeCall.value
+        if (activeCall != null) {
+            val updatedCall = activeCall.copy(startDate = startDate, endDate = endDate)
+            viewModel.updateCall(activeCall.id!!, updatedCall)
+        } else {
+            Toast.makeText(requireContext(), "No hay una convocatoria activa", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun showSuccessDialog(message: String) {
+        SweetAlertDialog(requireContext(), SweetAlertDialog.SUCCESS_TYPE)
+            .setTitleText("Éxito")
+            .setContentText(message)
+            .setConfirmText("OK")
+            .setConfirmClickListener { dialog -> dialog.dismiss() }
+            .show()
+    }
+
+    // Función para formatear la fecha de un formato a otro
+    private fun formatDate(date: String, inputPattern: String, outputPattern: String): String {
+        val inputFormat = SimpleDateFormat(inputPattern, Locale.getDefault())
+        val outputFormat = SimpleDateFormat(outputPattern, Locale.getDefault())
+        return outputFormat.format(inputFormat.parse(date)!!)
     }
 }

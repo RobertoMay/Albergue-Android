@@ -8,6 +8,7 @@ import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 
 interface CallService {
@@ -19,4 +20,10 @@ interface CallService {
 
     @DELETE("calls/{id}")
     suspend fun deleteCall(@Path("id") id: String): Response<Void>
+
+    @GET("calls/status")
+    suspend fun getActiveCall(): Response<CallResponse>
+
+    @PUT("calls/{id}")
+    suspend fun updateCall(@Path("id") id: String, @Body call: Call): Response<CallResponse>
 }

@@ -20,6 +20,7 @@ import androidx.activity.ComponentActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
+import com.example.albergue_android.ui.editCall.EditCallFragment
 
 
 class HomeActivity : AppCompatActivity() {
@@ -36,6 +37,7 @@ class HomeActivity : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false) // Esto quita el título predeterminado
+
 
 
         // Configurar DrawerLayout
@@ -88,7 +90,7 @@ class HomeActivity : AppCompatActivity() {
         //  Verifica si ya hay un fragmento cargado antes de reemplazarlo
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, HomeFragment())
+                .replace(R.id.fragment_container, EditCallFragment())
                 .commit()
         }
 

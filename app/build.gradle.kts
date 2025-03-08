@@ -66,6 +66,8 @@ dependencies {
 
     implementation(libs.itext.core)
 
+    implementation(libs.fragmet)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
