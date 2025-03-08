@@ -7,10 +7,7 @@
     android:background="@color/colorPrimary"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-    <FrameLayout
-        android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+
 
     <!-- Incluir el Toolbar reutilizable -->
 
@@ -32,5 +29,10 @@
         android:contentDescription="Logo INPI"
         android:layout_gravity="start"
         android:padding="1dp"/>
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </androidx.appcompat.widget.Toolbar>
