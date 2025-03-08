@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_grey"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- CardView para Gestión de Convocatorias -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardGestion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <!-- Header -->
+                <TextView
+                    android:id="@+id/adminTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gestión de Convocatorias"
+                    android:textColor="@color/primary_color"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:id="@+id/adminSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Complete el formulario para crear una nueva convocatoria"
+                    android:textColor="@color/secondary_text_color"
+                    android:textSize="14sp"
+                    app:layout_constraintTop_toBottomOf="@id/adminTitle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginBottom="24dp"/>
+
+                <!-- Formulario -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/formContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/adminSubtitle"
+                    android:padding="16dp"
+                    android:background="@color/white"
+                    android:clipToPadding="false"
+                    android:clipChildren="false">
+
+                    <!-- Título de la convocatoria -->
+                    <TextView
+                        android:id="@+id/titleLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Título de la convocatoria"
+                        android:textColor="@color/primary_text_color"
+                        android:textSize="16sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginBottom="8dp"/>
+
+                    <EditText
+                        android:id="@+id/titleInput"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Ingrese el título de la convocatoria"
+                        android:inputType="text"
+                        android:backgroundTint="@color/primary_color"
+                        android:textColor="@color/primary_text_color"
+                        app:layout_constraintTop_toBottomOf="@id/titleLabel"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginBottom="16dp"/>
+
+                    <!-- Cupo disponible -->
+                    <TextView
+                        android:id="@+id/cupoLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cupo disponible"
+                        android:textColor="@color/primary_text_color"
+                        android:textSize="16sp"
+                        app:layout_constraintTop_toBottomOf="@id/titleInput"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginBottom="8dp"/>
+
+                    <EditText
+                        android:id="@+id/cupoInput"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Ingrese el número de cupos"
+                        android:inputType="number"
+                        android:backgroundTint="@color/primary_color"
+                        android:textColor="@color/primary_text_color"
+                        app:layout_constraintTop_toBottomOf="@id/cupoLabel"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginBottom="16dp"/>
+
+                    <!-- Fecha de inicio -->
+                    <TextView
+                        android:id="@+id/startDateLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fecha de inicio"
+                        android:textColor="@color/primary_text_color"
+                        android:textSize="16sp"
+                        app:layout_constraintTop_toBottomOf="@id/cupoInput"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginBottom="8dp"/>
+
+                    <EditText
+                        android:id="@+id/startDateInput"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Seleccione la fecha de inicio"
+                        android:inputType="date"
+                        android:backgroundTint="@color/primary_color"
+                        android:textColor="@color/primary_text_color"
+                        app:layout_constraintTop_toBottomOf="@id/startDateLabel"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginBottom="16dp"/>
+
+                    <!-- Fecha de cierre -->
+                    <TextView
+                        android:id="@+id/endDateLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fecha de cierre"
+                        android:textColor="@color/primary_text_color"
+                        android:textSize="16sp"
+                        app:layout_constraintTop_toBottomOf="@id/startDateInput"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginBottom="8dp"/>
+
+                    <EditText
+                        android:id="@+id/endDateInput"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Seleccione la fecha de cierre"
+                        android:inputType="date"
+                        android:backgroundTint="@color/primary_color"
+                        android:textColor="@color/primary_text_color"
+                        app:layout_constraintTop_toBottomOf="@id/endDateLabel"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginBottom="24dp"/>
+
+                    <!-- Botones -->
+                    <Button
+                        android:id="@+id/cancelButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Cancelar"
+                        android:backgroundTint="@color/secondary_color"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:padding="12dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        app:layout_constraintTop_toBottomOf="@id/endDateInput"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/createButton"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="16dp"/>
+
+                    <Button
+                        android:id="@+id/createButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Crear convocatoria"
+                        android:backgroundTint="@color/primary_color"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:padding="12dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        app:layout_constraintTop_toBottomOf="@id/endDateInput"
+                        app:layout_constraintStart_toEndOf="@id/cancelButton"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginBottom="16dp"/>
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/lottieLoading"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:visibility="gone"
+                        app:lottie_rawRes="@raw/loading"
+                        app:lottie_autoPlay="false"
+                        app:lottie_loop="true"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_gravity="center" />
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- CardView para Historial de Convocatorias -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardHistorial"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            android:layout_marginTop="20sp"
+            app:cardElevation="3dp"
+            app:cardBackgroundColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/cardGestion"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <!-- Header -->
+                <TextView
+                    android:id="@+id/historyTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Historial de Convocatorias"
+                    android:textColor="@color/primary_color"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginBottom="16dp"/>
+
+                <!-- Filtro por año -->
+                <TextView
+                    android:id="@+id/filterTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Filtrar Convocatorias"
+                    android:textColor="@color/primary_text_color"
+                    android:textSize="18sp"
+                    app:layout_constraintTop_toBottomOf="@id/historyTitle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginBottom="8dp"/>
+
+                <EditText
+                    android:id="@+id/filterYearInput"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Ej. 2024"
+                    android:inputType="number"
+                    android:backgroundTint="@color/primary_color"
+                    android:textColor="@color/primary_text_color"
+                    app:layout_constraintTop_toBottomOf="@id/filterTitle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/applyFilterButton"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="16dp"/>
+
+                <Button
+                    android:id="@+id/applyFilterButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Aplicar"
+                    android:backgroundTint="@color/primary_color"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:padding="12dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    app:layout_constraintTop_toBottomOf="@id/filterTitle"
+                    app:layout_constraintEnd_toStartOf="@id/resetFilterButton"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="16dp"/>
+
+                <Button
+                    android:id="@+id/resetFilterButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Resetear"
+                    android:backgroundTint="@color/secondary_color"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:padding="12dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    app:layout_constraintTop_toBottomOf="@id/filterTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginBottom="16dp"/>
+
+                <!-- Lista de Convocatorias -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/callsRecyclerView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/filterYearInput"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="24dp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

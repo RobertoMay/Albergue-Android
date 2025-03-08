@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Título de la convocatoria -->
+        <TextView
+            android:id="@+id/callTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Título de la convocatoria"
+            android:textColor="@color/primary_text_color"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/deleteButton"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Estado de la convocatoria -->
+        <TextView
+            android:id="@+id/callStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Abierta"
+            android:textSize="14sp"
+            android:background="@drawable/status_background_open"
+        android:padding="4dp"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/callTitle"
+        app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp"
+            app:layout_goneMarginBottom="15dp"/>
+
+        <!-- Fecha de inicio -->
+        <TextView
+            android:id="@+id/callStartDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha de inicio: 2023-10-01"
+            android:textSize="14sp"
+            android:textColor="@color/secondary_text_color"
+            app:layout_constraintTop_toBottomOf="@id/callStatus"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Fecha de cierre -->
+        <TextView
+            android:id="@+id/callEndDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha de cierre: 2023-10-31"
+            android:textSize="14sp"
+            android:textColor="@color/secondary_text_color"
+            app:layout_constraintTop_toBottomOf="@id/callStartDate"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Cupo disponible -->
+        <TextView
+            android:id="@+id/callCupo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cupos: 100"
+            android:textSize="14sp"
+            android:textColor="@color/secondary_text_color"
+            app:layout_constraintTop_toBottomOf="@id/callEndDate"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Botón de borrar -->
+        <ImageButton
+            android:id="@+id/deleteButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_delete"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Eliminar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="8dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

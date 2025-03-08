@@ -17,4 +17,9 @@
     <color name="success_number_border">#297854</color>
     <color name="success_text">#297854</color>
     <color name="success_step3_background">#388E3C</color>
+    <color name="primary_color">#B41E46</color>
+    <color name="secondary_color">#F8D7DF</color>
+    <color name="background_grey">#F8F9FA</color>
+    <color name="primary_text_color">#2D3748</color>
+    <color name="secondary_text_color">#718096</color>
 </resources>
