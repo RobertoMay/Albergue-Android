@@ -37,4 +37,8 @@ object ApiClient {
     val callService: CallService by lazy {
         retrofit.create(CallService::class.java)
     }
+
+    val studentService: StudentService by lazy {
+        retrofit.create(StudentService::class.java)
+    }
 }

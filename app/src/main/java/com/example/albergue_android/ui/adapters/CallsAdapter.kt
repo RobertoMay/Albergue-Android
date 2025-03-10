@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.ListAdapter
 import com.example.albergue_android.domain.models.Call
 
 class CallsAdapter(
-    private val onDeleteClick: (String) -> Unit // Lambda que recibe el id de la convocatoria
+    private val onDeleteClick: (String) -> Unit
 ) : ListAdapter<Call, CallsAdapter.CallViewHolder>(CallDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CallViewHolder {

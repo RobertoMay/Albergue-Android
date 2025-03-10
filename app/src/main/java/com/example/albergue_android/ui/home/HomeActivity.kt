@@ -20,6 +20,7 @@ import androidx.activity.ComponentActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
+import com.example.albergue_android.ui.applicantslist.ApplicantsListFragment
 import com.example.albergue_android.ui.editCall.EditCallFragment
 
 
@@ -90,7 +91,7 @@ class HomeActivity : AppCompatActivity() {
         //  Verifica si ya hay un fragmento cargado antes de reemplazarlo
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, HomeFragment())
+                .replace(R.id.fragment_container, ApplicantsListFragment())
                 .commit()
         }
 

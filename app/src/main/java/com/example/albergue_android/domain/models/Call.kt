@@ -16,5 +16,7 @@ data class Call(
     val status: Boolean,
     val startDate: String,
     val endDate: String,
-    val cupo: Int
+    val cupo: Int,
+    val occupiedCupo: Int? = null,
+    val availableCupo: Int? = null
 )
