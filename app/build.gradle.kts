@@ -63,6 +63,24 @@ dependencies {
     implementation(libs.gson)
 
     implementation(libs.sweetalert)
+    implementation(libs.androidx.annotation)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
+
+    implementation("androidx.fragment:fragment-ktx:1.6.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+    implementation ("com.google.android.material:material:1.12.0")
+
+    // ViewModel
+
+
+    // LiveData
+
+
+    // Extensión para usar viewModels en Fragments
+
 
     implementation(libs.itext.core)
 
@@ -78,4 +96,11 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.androidx.drawerlayout)
     implementation(libs.google.material)
+
+
+
+
+
+
+
 }

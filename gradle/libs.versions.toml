@@ -13,6 +13,9 @@ material = "1.12.0"
 activity = "1.10.0"
 constraintlayout = "2.2.0"
 itext = "7.1.15"
+annotation = "1.6.0"
+lifecycleLivedataKtx = "2.8.7"
+lifecycleViewmodelKtx = "2.8.7"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -41,7 +44,10 @@ gson = "com.google.code.gson:gson:2.8.9"
 sweetalert = "com.github.f0ris.sweetalert:library:1.5.6"
 
 androidx-drawerlayout = { module = "androidx.drawerlayout:drawerlayout", version = "1.2.0" }
-google-material = { module = "com.google.android.material:material", version = "1.9.0" }
+google-material = { module = "com.google.android.material:material", version = "1.12.0" }
+androidx-annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
+androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
+androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 
 itext-core = { module = "com.itextpdf:itext7-core", version.ref = "itext" }
 fragmet= "androidx.fragment:fragment-ktx:1.8.6"
