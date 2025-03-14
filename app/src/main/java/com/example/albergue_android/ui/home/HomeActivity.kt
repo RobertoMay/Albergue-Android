@@ -23,6 +23,7 @@ import android.view.MenuItem
 import com.example.albergue_android.ui.applicantslist.ApplicantsListFragment
 import com.example.albergue_android.ui.editCall.EditCallFragment
 import com.example.albergue_android.ui.registration.RegistrationFragment
+import com.example.albergue_android.ui.authentication.LoginFragment
 
 
 class HomeActivity : AppCompatActivity() {
@@ -39,7 +40,6 @@ class HomeActivity : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false) // Esto quita el título predeterminado
-
 
 
         // Configurar DrawerLayout
@@ -64,8 +64,8 @@ class HomeActivity : AppCompatActivity() {
                 R.id.nav_home -> HomeFragment()
                 R.id.nav_about_us -> AboutFragment()
                 R.id.nav_activities -> ActivitiesFragment()
-               R.id.nav_registration -> RegistrationFragment()
-                // R.id.nav_login -> LoginFragment()
+               R.id.nav_registration -> RegistrationFormFragment()
+                R.id.nav_login -> LoginFragment()
                 else -> null
             }
 
