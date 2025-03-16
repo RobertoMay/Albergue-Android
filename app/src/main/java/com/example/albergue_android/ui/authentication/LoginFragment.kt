@@ -16,11 +16,14 @@ import com.example.albergue_android.R
 import com.example.albergue_android.domain.models.ILogin
 import com.example.albergue_android.ui.viewmodel.LoginViewModel
 import com.example.albergue_android.ui.admin.AdminFragment
+import com.example.albergue_android.ui.CallFragment
 import com.example.albergue_android.ui.alumn.AlumnoFragment
+import com.example.albergue_android.ui.components.InscriptionFragment
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.airbnb.lottie.LottieAnimationView
 import cn.pedant.SweetAlert.SweetAlertDialog
+import android.util.Log
 
 class LoginFragment : Fragment() {
 
@@ -69,7 +72,7 @@ class LoginFragment : Fragment() {
             stopLoading()
             response?.let {
                 showSuccessDialog("Bienvenido", it.message)
-                saveUserSession(it.id, it.esAdministrador)
+                saveUserSession(it.id, it.esAdministrador, it.nombresCompletos)
                 navigateToFragment(it.esAdministrador)
             }
         }
@@ -85,21 +88,29 @@ class LoginFragment : Fragment() {
     private fun checkSession() {
         val userId = sharedPreferences.getString("USER_ID", null)
         val isAdmin = sharedPreferences.getBoolean("IS_ADMIN", false)
+        // 📌 Mostrar el ID guardado en el Logcat
+        Log.d("SharedPreferences", "ID guardado en sesión: ${userId ?: "No hay ID guardado"}")
 
         if (userId != null) {
             navigateToFragment(isAdmin)
         }
     }
 
-    private fun saveUserSession(userId: String, isAdmin: Boolean) {
+    private fun saveUserSession(userId: String, isAdmin: Boolean, userName: String) {
         sharedPreferences.edit()
             .putString("USER_ID", userId)
+            .putString("USER_NAME", userName)
             .putBoolean("IS_ADMIN", isAdmin)
             .apply()
+        // 📌 Confirmar que el ID se guardó correctamente en Logcat
+        Log.d("SharedPreferences", "ID guardado correctamente: $userId")
+        Log.d("SharedPreferences", "Nombre guardado: $userName")
+        Log.d("SharedPreferences", "Es administrador: $isAdmin")
+
     }
 
     private fun navigateToFragment(isAdmin: Boolean) {
-        val fragment = if (isAdmin) AdminFragment() else AlumnoFragment()
+        val fragment = if (isAdmin) AdminFragment() else CallFragment()
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, fragment)
             .commit()
