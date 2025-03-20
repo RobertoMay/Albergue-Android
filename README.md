@@ -1,8 +1,8 @@
-#Proyecto Programación móvil
+# Proyecto Programación móvil
 
 ## Albergue
 
-###Docente: MIM. Carlos Omar Chab Lara  
+### Docente: MIM. Carlos Omar Chab Lara  
 
 ### Integrantes: 
  * Roberto May Vergara 7630
