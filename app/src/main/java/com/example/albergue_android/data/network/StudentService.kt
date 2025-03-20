@@ -11,4 +11,10 @@ interface StudentService {
         @Query("page") page: Int,
         @Query("name") name: String? = null
     ): Response<List<StudentDocDocument>>
+
+    @GET("studentdoc/enrolled")
+    suspend fun getEnrolledStudents(
+        @Query("page") page: Int,
+        @Query("name") name: String? = null
+    ): Response<List<StudentDocDocument>>
 }

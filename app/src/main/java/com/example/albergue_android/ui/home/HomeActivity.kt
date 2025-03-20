@@ -24,6 +24,7 @@ import com.example.albergue_android.ui.applicantslist.ApplicantsListFragment
 import com.example.albergue_android.ui.editCall.EditCallFragment
 import com.example.albergue_android.ui.registration.RegistrationFragment
 import com.example.albergue_android.ui.authentication.LoginFragment
+import com.example.albergue_android.ui.inscriptionlist.InscriptionListFragment
 
 
 class HomeActivity : AppCompatActivity() {
