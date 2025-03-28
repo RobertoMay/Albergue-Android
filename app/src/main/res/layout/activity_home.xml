@@ -56,6 +56,10 @@
         app:itemIconTint="@color/white"
 
         style="@style/NavigationViewStyle"
+        app:itemTextAppearance="@style/NavigationViewSubtitle"
+
+        app:itemBackground="@drawable/menu_item_selector"
+
         />
 
 </androidx.drawerlayout.widget.DrawerLayout>

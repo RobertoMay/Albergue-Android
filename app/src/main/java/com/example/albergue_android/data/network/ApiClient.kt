@@ -4,6 +4,11 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import android.content.Context
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import com.example.albergue_android.data.network.*
 
 object ApiClient {
     private const val BASE_URL = "https://albergue-57e14.uc.r.appspot.com/api/"
@@ -47,5 +52,48 @@ object ApiClient {
     val authenticationService: AuthenticationService by lazy {
         retrofit.create(AuthenticationService::class.java)
     }
+
+
+    // Método para obtener el token desde SharedPreferences
+    private fun getToken(context: Context): String? {
+        val sharedPreferences = context.getSharedPreferences("AlberguePrefs", Context.MODE_PRIVATE)
+        return sharedPreferences.getString("TOKEN", null)
+    }
+
+    // Interceptor para agregar el token a cada solicitud
+    private fun authInterceptor(context: Context): Interceptor {
+        return Interceptor { chain ->
+            val token = getToken(context)
+            val request: Request = if (token != null) {
+                chain.request().newBuilder()
+                    .addHeader("Authorization", "Bearer $token") // Token en el header
+                    .build()
+            } else {
+                chain.request()
+            }
+            chain.proceed(request)
+        }
+    }
+
+    // Cliente OkHttp con el interceptor
+    private fun okHttpClient(context: Context): OkHttpClient {
+        return OkHttpClient.Builder()
+            .addInterceptor(authInterceptor(context))
+            .build()
+    }
+
+    // Retrofit con el cliente OkHttp
+    fun getRetrofitInstance(context: Context): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .client(okHttpClient(context)) // Cliente con el token
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    fun <S> createService(context: Context, serviceClass: Class<S>): S {
+        return getRetrofitInstance(context).create(serviceClass)
+    }
+
 
 }
