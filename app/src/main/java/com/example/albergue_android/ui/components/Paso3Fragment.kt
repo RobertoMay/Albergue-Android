@@ -604,7 +604,7 @@ class Paso3Fragment : Fragment() {
         updateUI(studentName)
     }
 
-    private fun updateUI(studenName: String) {
+    private fun updateUI(studentName: String) {
         // Cambiar el texto del saludo
         tvWelcome.text = "Bienvenido, $studentName"
 
@@ -702,7 +702,6 @@ class Paso3Fragment : Fragment() {
             }
         }
 
-        // Si no se pudo obtener el nombre del archivo desde el Cursor, intentar obtenerlo desde el Uri
         if (fileName.isEmpty()) {
             fileName = uri.lastPathSegment ?: "document.pdf"
         }

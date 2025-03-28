@@ -1,5 +1,6 @@
 package com.example.albergue_android.ui
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -82,6 +83,13 @@ class CallFragment : Fragment() {
                     tvConvocatoriaDates.text = "Del $startDate al $endDate"
                     tvConvocatoriaDescription.text = "El albergue ofrece alojamiento gratuito a estudiantes indígenas."
 
+                    // Guardar en SharedPreferences
+                    val sharedPref = requireContext().getSharedPreferences("AlberguePrefs", Context.MODE_PRIVATE)
+                    with(sharedPref.edit()) {
+                        putString("statusenrollment", "$startDate - $endDate")
+                        putString("idenrollment", convocatoria?.id ?: "")
+                        apply()
+                    }
 
                     btnRegister.visibility = View.VISIBLE
                     btnRegister.setOnClickListener {

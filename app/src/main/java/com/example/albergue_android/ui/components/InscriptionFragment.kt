@@ -23,9 +23,13 @@ import com.example.albergue_android.data.network.StudentResponse
 import com.example.albergue_android.domain.models.DataStudent
 import com.example.albergue_android.domain.models.StudentData
 import com.example.albergue_android.domain.models.StudentDocDocument
+import com.example.albergue_android.domain.models.StudentDocument
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
     // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -77,7 +81,7 @@ class InscriptionFragment : Fragment() {
         sharedd = requireActivity().getSharedPreferences("AlberguePrefs", Context.MODE_PRIVATE)
         aspiranteId = obtenerAspiranteId()
 
-        Toast.makeText(context, sharedd.getString("USER_ID","no") + " : " + aspiranteId, Toast.LENGTH_SHORT).show()
+//        Toast.makeText(context, sharedd.getString("USER_ID","no") + " : " + aspiranteId, Toast.LENGTH_SHORT).show()
 
         // Inicializar vistas
         progressBar = view.findViewById(R.id.progressBar)
@@ -452,8 +456,7 @@ class InscriptionFragment : Fragment() {
             override fun onResponse(call: Call<StudentResponse>, response: Response<StudentResponse>) {
                 showLoading(false) // Ocultar animación de carga
                 if (response.isSuccessful && response.body() != null) {
-                    showSuccessDialog() // Mostrar diálogo de éxito
-                    nextStep()
+                    createStudentDoc()
                 } else {
                     val errorMessage = response.errorBody()?.string() ?: "Error en el registro"
                     showErrorDialog(errorMessage) // Mostrar diálogo de error
@@ -463,6 +466,60 @@ class InscriptionFragment : Fragment() {
             override fun onFailure(call: Call<StudentResponse>, t: Throwable) {
                 showLoading(false) // Ocultar animación de carga
                 showErrorDialog(t.message ?: "Error de conexión") // Mostrar diálogo de error
+            }
+        })
+    }
+
+    private fun createStudentDoc() {
+        val sharedPreferences = requireContext().getSharedPreferences("AlberguePrefs", Context.MODE_PRIVATE)
+        val statusenrollment = sharedPreferences.getString("statusenrollment", "") ?: ""
+        val idenrollment = sharedPreferences.getString("idenrollment", "") ?: ""
+
+        // Crear lista de documentos
+        val documents = listOf(
+            StudentDocument(
+                name = "Solicitud de Ingreso",
+                type = "Solicitud Ingreso",
+                link = "Anexo1_solicitud_ingreso",
+                date = Date(),
+                status = "uploaded",
+                displayName = "Solicitud de Ingreso"
+            )
+        )
+
+        // Crear objeto StudentDocDocument
+        val studentDoc = StudentDocDocument(
+            aspiranteId = aspiranteId,
+            name = datosPaso1?.get("nombre") ?: "",
+            lastName1 = datosPaso1?.get("primerApellido") ?: "",
+            lastName2 = datosPaso1?.get("segundoApellido") ?: "",
+            email = datosPaso1?.get("correoElectronico") ?: "",
+            curp = datosPaso1?.get("curp") ?: "",
+            enrollmentPeriod = statusenrollment,
+            enrollmentStatus = false,
+            convocatoriaId = idenrollment,
+            Documents = documents,
+            fecha = Date(),
+            hora = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
+        )
+
+        // Segunda llamada: crear studentDoc
+        ApiClient.studentDocService.createStudentDoc(studentDoc).enqueue(object :
+            Callback<StudentDocDocument> {
+            override fun onResponse(call: Call<StudentDocDocument>, response: Response<StudentDocDocument>) {
+                showLoading(false)
+                if (response.isSuccessful) {
+                    showSuccessDialog()
+                    nextStep()
+                } else {
+                    val errorMessage = response.errorBody()?.string() ?: "Error al registrar documentos"
+                    showErrorDialog("Registro exitoso, pero error en documentos: $errorMessage")
+                }
+            }
+
+            override fun onFailure(call: Call<StudentDocDocument>, t: Throwable) {
+                showLoading(false)
+                showErrorDialog("Registro exitoso, pero error en documentos: ${t.message ?: "Error de conexión"}")
             }
         })
     }
