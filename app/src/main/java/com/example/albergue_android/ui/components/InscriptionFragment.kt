@@ -1,6 +1,7 @@
     package com.example.albergue_android.ui.components
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.util.Log
@@ -58,6 +59,7 @@ class InscriptionFragment : Fragment() {
 
     private var currentStep = 1
 
+    private lateinit var sharedd : SharedPreferences;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -72,8 +74,10 @@ class InscriptionFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_inscription, container, false)
-
+        sharedd = requireActivity().getSharedPreferences("AlberguePrefs", Context.MODE_PRIVATE)
         aspiranteId = obtenerAspiranteId()
+
+        Toast.makeText(context, sharedd.getString("USER_ID","no") + " : " + aspiranteId, Toast.LENGTH_SHORT).show()
 
         // Inicializar vistas
         progressBar = view.findViewById(R.id.progressBar)
@@ -186,6 +190,7 @@ class InscriptionFragment : Fragment() {
 
     private fun getBackendDocuments() {
         val aspiranteId = obtenerAspiranteId()
+        println("Este es el aspirante id "+ aspiranteId)
 
         // Hacer la llamada al backend
         ApiClient.studentDocService.getById(aspiranteId).enqueue(object : Callback<List<StudentDocDocument>> {
@@ -208,7 +213,7 @@ class InscriptionFragment : Fragment() {
 
                 } else {
                     // Manejar el error si la respuesta no es exitosa
-                    showErrorDialog("Error al obtener los documentos: ${response.message()}")
+//                    showErrorDialog("Error al obtener los documentos: ${response.message()}")
                     println("Error al obtener documentos: $response")
                 }
             }
@@ -311,38 +316,44 @@ class InscriptionFragment : Fragment() {
     }
 
     private fun obtenerAspiranteId(): String {
-        val sharedPreferences = requireContext().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE)
-        return sharedPreferences.getString("aspiranteId", "0eNvExukbTSRglFVkSzH") ?: "0eNvExukbTSRglFVkSzH"
+        val sharedPreferences = requireContext().getSharedPreferences("AlberguePrefs", Context.MODE_PRIVATE)
+        println("Id que devuelve " + sharedPreferences.getString("USER_ID", "0eNvExukbTSRglFVkSzH"))
+        return sharedPreferences.getString("USER_ID", "0eNvExukbTSRglFVkSzH") ?: "0eNvExukbTSRglFVkSzH"
     }
 
     private fun getEnrollmentForm(aspiranteId: String) {
+        println("Se esta imprimiendo")
+        var e : String? = sharedd.getString("USER_ID","no");
+
         val service = ApiClient.studentEnrollmentService
-        service.getById(aspiranteId).enqueue(object : Callback<StudentEnrollmentResponse> {
-            override fun onResponse(
-                call: Call<StudentEnrollmentResponse>,
-                response: Response<StudentEnrollmentResponse>
-            ) {
-                if (response.isSuccessful && response.body() != null) {
-                    val enrollmentResponse = response.body()!!
-                    if (!enrollmentResponse.error) {
+        e?.let {
+            service.getById(it).enqueue(object : Callback<StudentEnrollmentResponse> {
+                override fun onResponse(
+                    call: Call<StudentEnrollmentResponse>,
+                    response: Response<StudentEnrollmentResponse>
+                ) {
+                    if (response.isSuccessful && response.body() != null) {
+                        val enrollmentResponse = response.body()!!
+                        if (!enrollmentResponse.error) {
 
-                        val studentName = enrollmentResponse.data?.nombre
-                        avanzarAlPaso3(studentName)
+                            val studentName = enrollmentResponse.data?.nombre
+                            avanzarAlPaso3(studentName)
+                        } else {
+                            // Hubo un error en la respuesta
+                            println("Error: ${enrollmentResponse.msg}")
+                        }
                     } else {
-                        // Hubo un error en la respuesta
-                        println("Error: ${enrollmentResponse.msg}")
+                        // Error en la llamada al servicio
+                        println("Error en la llamada al servicio: ${response.errorBody()?.string()}")
                     }
-                } else {
-                    // Error en la llamada al servicio
-                    println("Error en la llamada al servicio: ${response.errorBody()?.string()}")
                 }
-            }
 
-            override fun onFailure(call: Call<StudentEnrollmentResponse>, t: Throwable) {
-                // Error de conexión
-                println("Error de conexión: ${t.message}")
-            }
-        })
+                override fun onFailure(call: Call<StudentEnrollmentResponse>, t: Throwable) {
+                    // Error de conexión
+                    println("Error de conexión: ${t.message}")
+                }
+            })
+        }
     }
 
     private fun avanzarAlPaso3(studentName: String?) {
@@ -357,7 +368,7 @@ class InscriptionFragment : Fragment() {
 
 
     private fun guardarNombreEstudiante(nombre: String) {
-        val sharedPreferences = requireContext().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE)
+        val sharedPreferences = requireContext().getSharedPreferences("AlberguePrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putString("studentName", nombre)
         editor.apply()

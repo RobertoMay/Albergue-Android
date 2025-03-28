@@ -1,0 +1,56 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Opción de Inicio -->
+    <item
+        android:id="@+id/nav_home"
+        android:title="Inicio"
+        android:titleTextAppearance="@style/NavigationViewTitle"
+       />
+
+    <!-- Sección Alumnos -->
+    <item
+
+
+        android:title="Alumnos"
+        android:titleTextAppearance="@style/NavigationViewTitle"
+       />
+
+    <item
+        android:id="@+id/nav_por_inscribirse"
+        android:title="      Por inscribirse"
+        android:titleTextAppearance="@style/NavigationViewSubtitle"
+         />
+
+    <item
+        android:id="@+id/nav_inscritos"
+        android:title="      Inscritos"
+        android:titleTextAppearance="@style/NavigationViewSubtitle"
+      />
+
+    <!-- Sección Convocatoria -->
+    <item
+
+        android:title="Convocatoria"
+        android:titleTextAppearance="@style/NavigationViewTitle"
+        />
+
+    <item
+        android:id="@+id/nav_crear"
+        android:title="      Crear"
+        android:titleTextAppearance="@style/NavigationViewSubtitle"
+       />
+
+    <item
+        android:id="@+id/nav_editar"
+        android:title="      Editar"
+        android:titleTextAppearance="@style/NavigationViewSubtitle"
+       />
+
+    <!-- Opción Cerrar sesión -->
+    <item
+        android:id="@+id/nav_logout"
+        android:title="Cerrar sesión"
+        android:titleTextAppearance="@style/NavigationViewTitle"
+      />
+</menu>

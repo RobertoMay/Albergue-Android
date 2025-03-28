@@ -1,5 +1,6 @@
 package com.example.albergue_android.ui.viewmodel
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,9 +8,9 @@ import com.example.albergue_android.data.repository.LoginRepository
 import com.example.albergue_android.data.network.LoginResponse
 import com.example.albergue_android.domain.models.ILogin
 
-class LoginViewModel : ViewModel() {
+class LoginViewModel (private val loginRepository: LoginRepository) : ViewModel() {
 
-    private val loginRepository = LoginRepository()
+
 
     private val _loginResponse = MutableLiveData<LoginResponse?>()
     val loginResponse: LiveData<LoginResponse?> = _loginResponse

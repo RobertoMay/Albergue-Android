@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_home"
+        android:title="Inicio"
+        android:titleTextAppearance="@style/NavigationViewTitle"
+        />
+    <item
+        android:id="@+id/nav_logout"
+        android:title="Cerrar sesión"
+        android:titleTextAppearance="@style/NavigationViewTitle"
+        />
+</menu>

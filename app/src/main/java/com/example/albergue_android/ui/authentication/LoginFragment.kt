@@ -1,33 +1,35 @@
 package com.example.albergue_android.ui.authentication
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import com.example.albergue_android.R
-import com.example.albergue_android.domain.models.ILogin
-import com.example.albergue_android.ui.viewmodel.LoginViewModel
-import com.example.albergue_android.ui.admin.AdminFragment
-import com.example.albergue_android.ui.CallFragment
-import com.example.albergue_android.ui.alumn.AlumnoFragment
-import com.example.albergue_android.ui.components.InscriptionFragment
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
+import androidx.lifecycle.ViewModelProvider
 import com.airbnb.lottie.LottieAnimationView
 import cn.pedant.SweetAlert.SweetAlertDialog
-import android.util.Log
+import com.example.albergue_android.R
+import com.example.albergue_android.data.repository.LoginRepository
+import com.example.albergue_android.domain.models.ILogin
+import com.example.albergue_android.ui.viewmodel.LoginViewModel
+import com.example.albergue_android.ui.viewmodel.LoginViewModelFactory
+import com.example.albergue_android.ui.admin.AdminFragment
+import com.example.albergue_android.ui.CallFragment
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 
 class LoginFragment : Fragment() {
 
-    private val loginViewModel: LoginViewModel by viewModels()
+    private lateinit var loginViewModel: LoginViewModel
     private lateinit var emailEditText: EditText
     private lateinit var curpEditText: TextInputEditText
     private lateinit var passwordLayout: TextInputLayout
@@ -41,17 +43,26 @@ class LoginFragment : Fragment() {
     ): View {
         val view = inflater.inflate(R.layout.fragment_login, container, false)
 
+        // 📌 Inicialización de vistas
         emailEditText = view.findViewById(R.id.emailEditText)
         curpEditText = view.findViewById(R.id.curpEditText)
         passwordLayout = view.findViewById(R.id.passwordLayout)
         loginButton = view.findViewById(R.id.loginButton)
         lottieLoading = view.findViewById(R.id.lottieLoading)
 
+        // 📌 Inicialización de SharedPreferences
         sharedPreferences = requireActivity().getSharedPreferences("AlberguePrefs", Context.MODE_PRIVATE)
 
-        // Verificar si ya hay sesión guardada
+        // 📌 Crear LoginRepository con SharedPreferences
+        val loginRepository = LoginRepository(sharedPreferences)
+
+        // 📌 Inicializar LoginViewModel con Factory
+        loginViewModel = ViewModelProvider(this, LoginViewModelFactory(loginRepository))[LoginViewModel::class.java]
+
+        // 📌 Verificar si hay sesión guardada
         checkSession()
 
+        // 📌 Configurar botón de login
         loginButton.setOnClickListener {
             val email = emailEditText.text.toString()
             val curp = curpEditText.text.toString()
@@ -68,11 +79,12 @@ class LoginFragment : Fragment() {
             }
         }
 
+        // 📌 Observadores del ViewModel
         loginViewModel.loginResponse.observe(viewLifecycleOwner) { response ->
             stopLoading()
             response?.let {
                 showSuccessDialog("Bienvenido", it.message)
-                saveUserSession(it.id, it.esAdministrador, it.nombresCompletos)
+                saveUserSession(it.id, it.token, it.esAdministrador, it.nombresCompletos)
                 navigateToFragment(it.esAdministrador)
             }
         }
@@ -88,7 +100,7 @@ class LoginFragment : Fragment() {
     private fun checkSession() {
         val userId = sharedPreferences.getString("USER_ID", null)
         val isAdmin = sharedPreferences.getBoolean("IS_ADMIN", false)
-        // 📌 Mostrar el ID guardado en el Logcat
+
         Log.d("SharedPreferences", "ID guardado en sesión: ${userId ?: "No hay ID guardado"}")
 
         if (userId != null) {
@@ -96,17 +108,19 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun saveUserSession(userId: String, isAdmin: Boolean, userName: String) {
+    private fun saveUserSession(userId: String, token: String, isAdmin: Boolean, userName: String) {
+
         sharedPreferences.edit()
             .putString("USER_ID", userId)
+            .putString("TOKEN", token)
             .putString("USER_NAME", userName)
             .putBoolean("IS_ADMIN", isAdmin)
             .apply()
-        // 📌 Confirmar que el ID se guardó correctamente en Logcat
+
         Log.d("SharedPreferences", "ID guardado correctamente: $userId")
+        Log.d("SharedPreferences", "Token guardado: $token")
         Log.d("SharedPreferences", "Nombre guardado: $userName")
         Log.d("SharedPreferences", "Es administrador: $isAdmin")
-
     }
 
     private fun navigateToFragment(isAdmin: Boolean) {
@@ -114,6 +128,9 @@ class LoginFragment : Fragment() {
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, fragment)
             .commit()
+
+        // Enviar broadcast para actualizar el menú en HomeActivity
+        requireActivity().sendBroadcast(Intent("UPDATE_NAV_MENU"))
     }
 
     private fun startLoading() {
@@ -143,4 +160,5 @@ class LoginFragment : Fragment() {
             .setConfirmText("Entendido")
             .show()
     }
+
 }

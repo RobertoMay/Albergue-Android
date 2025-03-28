@@ -585,7 +585,7 @@ class Paso3Fragment : Fragment() {
                     }
                 } else {
                     // Manejar el error si la respuesta no es exitosa
-                    showErrorDialog("Error al obtener los documentos: ${response.message()}")
+//                    showErrorDialog("Error al obtener los documentos: ${response.message()}")
                     println("Error al obtener documentos: $response")
                     callback(studentDocumentsDefault + tutorDocumentsDefault)
                 }
@@ -620,8 +620,8 @@ class Paso3Fragment : Fragment() {
     }
 
     private fun obtenerAspiranteId(): String {
-        val sharedPreferences = requireContext().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE)
-        return sharedPreferences.getString("aspiranteId", "0eNvExukbTSRglFVkSzH") ?: "0eNvExukbTSRglFVkSzH"
+        val sharedPreferences = requireContext().getSharedPreferences("AlberguePrefs", Context.MODE_PRIVATE)
+        return sharedPreferences.getString("USER_ID", "0eNvExukbTSRglFVkSzH") ?: "0eNvExukbTSRglFVkSzH"
     }
 
     private fun combineDocuments(
@@ -978,7 +978,7 @@ class Paso3Fragment : Fragment() {
     }
 
     private fun openFilePicker(document: StudentDocument) {
-        currentDocument = document // Almacenar el documento actual
+        currentDocument = document
         val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
             type = "application/pdf"
             addCategory(Intent.CATEGORY_OPENABLE)
@@ -1013,7 +1013,8 @@ class Paso3Fragment : Fragment() {
                             hideComments()
                         }
                     } else {
-                        showErrorDialog("Error al obtener los comentarios.")
+//                        showErrorDialog("Error al obtener los comentarios.")
+                        println("Error al obtener comentarios: ${response.errorBody()?.string()}")
                     }
                 }
 
