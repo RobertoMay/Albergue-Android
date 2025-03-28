@@ -16,6 +16,7 @@ itext = "7.1.15"
 annotation = "1.6.0"
 lifecycleLivedataKtx = "2.8.7"
 lifecycleViewmodelKtx = "2.8.7"
+mpandroidchart = "v3.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -48,7 +49,7 @@ google-material = { module = "com.google.android.material:material", version = "
 androidx-annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
 androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
-
+mpandroidchart = { module = "com.github.PhilJay:MPAndroidChart", version = "v3.1.0" }
 itext-core = { module = "com.itextpdf:itext7-core", version.ref = "itext" }
 fragmet= "androidx.fragment:fragment-ktx:1.8.6"
 

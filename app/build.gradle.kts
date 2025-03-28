@@ -66,6 +66,7 @@ dependencies {
     implementation(libs.androidx.annotation)
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.mpandroidchart)
 
 
     implementation("androidx.fragment:fragment-ktx:1.6.1")
