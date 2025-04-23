@@ -8,6 +8,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#B41E46</color>
+    <color name="yellow">#ffc107</color>
+    <color name="gray_light">#f8f9fa</color>
+    <color name="blue">#007bff</color>
+
+
+
 
     <color name="colorPrimary">#b41e46</color>
     <color name="colorMenuBackground">#D32F2F</color>

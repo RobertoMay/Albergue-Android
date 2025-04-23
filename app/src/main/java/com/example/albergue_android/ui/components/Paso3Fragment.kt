@@ -723,11 +723,6 @@ class Paso3Fragment : Fragment() {
         val documentTypeBody = RequestBody.create(MediaType.parse("text/plain"), document.type)
         val documentNameBody = RequestBody.create(MediaType.parse("text/plain"), fileName) // Usar fileName
 
-        // Verificar los valores reales
-        println("Vamos a ver lo que le falta:")
-        println("aspiranteId: $aspiranteId")
-        println("documentType: ${document.type}")
-        println("documentName: $fileName") // Usar fileName
 
         ApiClient.studentDocService.uploadFile(aspiranteIdBody, filePart, documentTypeBody, documentNameBody)
             .enqueue(object : Callback<Void> {

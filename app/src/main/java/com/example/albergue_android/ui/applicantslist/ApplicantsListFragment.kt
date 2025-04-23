@@ -15,8 +15,10 @@ import com.example.albergue_android.R
 import com.example.albergue_android.data.network.ApiClient
 import com.example.albergue_android.databinding.FragmentApplicantsListBinding
 import com.example.albergue_android.domain.models.Call
+import com.example.albergue_android.domain.models.StudentDocDocument
 import com.example.albergue_android.ui.adapters.Student
 import com.example.albergue_android.ui.adapters.StudentsAdapter
+import com.example.albergue_android.ui.documentsdialog.DocumentsDialogFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -68,7 +70,9 @@ class ApplicantsListFragment : Fragment() {
         lottieLoading = view.findViewById(R.id.lottieLoading)
 
         // Configurar RecyclerView
-        studentsAdapter = StudentsAdapter(emptyList()) // Inicialmente vacío
+        studentsAdapter = StudentsAdapter(emptyList()) { student ->
+            showDocumentsDialog(student)
+        }
         binding.rvStudents.layoutManager = LinearLayoutManager(requireContext())
         binding.rvStudents.adapter = studentsAdapter
 
@@ -234,6 +238,22 @@ class ApplicantsListFragment : Fragment() {
         // Deshabilitar botones mientras se carga
         binding.btnPrevious.isEnabled = !show
         binding.btnNext.isEnabled = !show
+    }
+
+    private fun showDocumentsDialog(student: StudentDocDocument) {
+        // Obtener los documentos del estudiante (debes adaptar esto según tu API)
+        val studentDocuments = student.Documents?.filter { !it.type.contains("_tutor") } ?: emptyList()
+        val tutorDocuments = student.Documents?.filter { it.type.contains("_tutor") } ?: emptyList()
+
+        val dialog = DocumentsDialogFragment.newInstance(
+            studentName = student.name ?: "Estudiante",
+            isEnrolled = student.enrollmentStatus ?: false,
+            studentDocuments = studentDocuments,
+            tutorDocuments = tutorDocuments,
+            studentId = student.aspiranteId ?: ""
+        )
+
+        dialog.show(parentFragmentManager, "DocumentsDialog")
     }
 
     override fun onDestroyView() {
