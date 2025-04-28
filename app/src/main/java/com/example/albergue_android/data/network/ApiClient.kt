@@ -53,6 +53,11 @@ object ApiClient {
         retrofit.create(AuthenticationService::class.java)
     }
 
+    val adminService: AdminService by lazy {
+        retrofit.create(AdminService::class.java)
+    }
+
+
 
     // Método para obtener el token desde SharedPreferences
     private fun getToken(context: Context): String? {

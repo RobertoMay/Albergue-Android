@@ -1,14 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textViewAdmin"
+    <!-- ProgressBar centrado en toda la pantalla -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Admin"
-        android:textSize="24sp"/>
-</LinearLayout>
+        android:layout_gravity="center"
+        android:visibility="visible" />
+
+    <!-- Contenido de la pantalla (inicialmente oculto) -->
+    <ScrollView
+        android:id="@+id/contentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textViewWelcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bienvenido"
+                android:textColor="@android:color/black"
+                android:textSize="25sp"
+                android:layout_marginTop="16dp"/>
+            <TextView
+                android:id="@+id/textViewNoStudents"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No hay alumnos inscritos actualmente."
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:padding="16dp" />
+
+
+            <TextView
+                android:id="@+id/textViewStudents"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alumnos inscritos"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:layout_marginTop="8dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Porcentaje de alumnos inscritos y por inscribirse"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp"
+                android:textColor="@android:color/black" />
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/pieChartInscritos"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Documentación de alumnos en proceso de inscripción"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginTop="24dp"
+                android:textColor="@android:color/black" />
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/pieChartDocumentacion"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ocupación del albergue"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginTop="24dp"
+                android:textColor="@android:color/black" />
+
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/pieChartAlbergue"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Distribución por género"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginTop="24dp"
+                android:textColor="@android:color/black" />
+
+            <com.github.mikephil.charting.charts.HorizontalBarChart
+                android:id="@+id/barChartGenero"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="16dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>
