@@ -22,6 +22,7 @@ import com.example.albergue_android.ui.authentication.LoginFragment
 import com.example.albergue_android.ui.editCall.EditCallFragment
 import com.example.albergue_android.ui.components.InscriptionFragment
 import com.example.albergue_android.ui.callmanagement.CallManagementFragment
+import com.example.albergue_android.ui.inscriptionlist.InscriptionListFragment
 import com.example.albergue_android.ui.registrationform.RegistrationFormFragment
 import com.google.android.material.navigation.NavigationView
 
@@ -187,7 +188,7 @@ class HomeActivity : AppCompatActivity() {
                     }
                 }
                 R.id.nav_por_inscribirse -> ApplicantsListFragment().also { isInHome = false }
-                R.id.nav_inscritos -> InscriptionFragment().also { isInHome = false }
+                R.id.nav_inscritos -> InscriptionListFragment().also { isInHome = false }
                 R.id.nav_crear -> CallManagementFragment().also { isInHome = false }
                 R.id.nav_editar -> EditCallFragment().also { isInHome = false }
                 R.id.nav_logout -> {
